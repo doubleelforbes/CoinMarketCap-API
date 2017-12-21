@@ -12,6 +12,16 @@ def getAPIdata():
     jsondata = json.loads(data)
     return jsondata
 
+def getCoinIndex(coinstr):
+    global coins
+    i = 0
+    for coin in coins:
+        if coinstr.upper() == coin.Symbol:
+            return i
+        else:
+            i += 1
+    return -1
+
 coins = []
 print("Fetching API Data from https://api.coinmarketcap.com ...")
 apidata = getAPIdata()
@@ -47,4 +57,4 @@ print("Coin Objects Filled! Iterate and Print")
 # coin.tocommas() is also available for a headerless printout
 for coin in coins:
     print(coin.tostring())
-        
+print(str(getCoinIndex("bTc")))
